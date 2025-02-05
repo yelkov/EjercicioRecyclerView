@@ -1,5 +1,6 @@
 package com.example.ejerciciorecyclerview;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,14 @@ public class AdapterAnimales extends RecyclerView.Adapter {
         viewHolder.txtAnimal.setText(animal.getNombre());
         viewHolder.txtDescripcion.setText(animal.getDescripcion());
         viewHolder.imgAnimal.setImageResource(animal.getImagen());
+        viewHolder.btnAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),DetallesActivity.class);
+                intent.putExtra("animal", animal);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

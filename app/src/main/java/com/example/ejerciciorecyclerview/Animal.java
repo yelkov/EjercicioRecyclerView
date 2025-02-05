@@ -1,6 +1,8 @@
 package com.example.ejerciciorecyclerview;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
 
     private String nombre;
     private String descripcion;
