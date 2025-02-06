@@ -11,11 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 public class DetallesActivity extends AppCompatActivity {
     ImageView imgAnimalDetalles;
     TextView txtAnimalDetalles, txtDescripcionDetalles;
     Button btnVolver;
+    AnimalViewModel animalViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +28,16 @@ public class DetallesActivity extends AppCompatActivity {
         txtAnimalDetalles = findViewById(R.id.txtAnimalDetalles);
         txtDescripcionDetalles = findViewById(R.id.txtDescripcionDetalles);
         btnVolver = findViewById(R.id.btnVolver);
-
-        Animal animal = (Animal) getIntent().getSerializableExtra("animal");
+        animalViewModel = new ViewModelProvider(this).get(AnimalViewModel.class);
+        Integer posicion = getIntent().getIntExtra(AdapterAnimales.POSICION_ANIMAL,0);
+        Animal animal = animalViewModel.animales.getValue().get(posicion);
         if(animal != null){
             imgAnimalDetalles.setImageResource(animal.getImagen());
             txtAnimalDetalles.setText(animal.getNombre());
             txtDescripcionDetalles.setText(animal.getDescripcion());
         }
+
+
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override

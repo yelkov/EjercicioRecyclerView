@@ -12,7 +12,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
 
     TextView txtAnimal, txtDescripcion;
     Button btnAnimal;
-    ImageView imgAnimal;
+    ImageView imgAnimal, imgVisitado;
 
     public CardViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -20,5 +20,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         txtDescripcion = itemView.findViewById(R.id.txtDescripcion);
         imgAnimal = itemView.findViewById(R.id.imgAnimal);
         btnAnimal = itemView.findViewById(R.id.btnAnimal);
+        imgVisitado = itemView.findViewById(R.id.imgVisitado);
     }
 }

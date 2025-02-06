@@ -18,36 +18,49 @@
         android:id="@+id/contenedorTexto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@id/imgAnimal"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnAnimal"
-        android:layout_margin="8dp">
+        app:layout_constraintStart_toEndOf="@id/imgAnimal"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtAnimal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre del Animal"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripción breve"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
     </LinearLayout>
+
     <Button
         android:id="@+id/btnAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="Ver detalles"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgVisitado"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="119dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/contenedorTexto"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnimal"
+        app:layout_constraintVertical_bias="0.6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
