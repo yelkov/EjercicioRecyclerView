@@ -28,13 +28,14 @@ public class DetallesActivity extends AppCompatActivity {
         txtAnimalDetalles = findViewById(R.id.txtAnimalDetalles);
         txtDescripcionDetalles = findViewById(R.id.txtDescripcionDetalles);
         btnVolver = findViewById(R.id.btnVolver);
-        animalViewModel = new ViewModelProvider(this).get(AnimalViewModel.class);
+        animalViewModel = AnimalViewModel.getInstance(this.getApplication());
         Integer posicion = getIntent().getIntExtra(AdapterAnimales.POSICION_ANIMAL,0);
         Animal animal = animalViewModel.animales.getValue().get(posicion);
         if(animal != null){
             imgAnimalDetalles.setImageResource(animal.getImagen());
             txtAnimalDetalles.setText(animal.getNombre());
             txtDescripcionDetalles.setText(animal.getDescripcion());
+            animalViewModel.setAnimalVisitado(animal);
         }
 
 

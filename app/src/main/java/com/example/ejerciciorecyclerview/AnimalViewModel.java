@@ -1,25 +1,31 @@
 package com.example.ejerciciorecyclerview;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalViewModel extends ViewModel {
+public class AnimalViewModel extends AndroidViewModel {
     MutableLiveData<List<Animal>> animales;
+    private static AnimalViewModel instance;
 
-    public AnimalViewModel(){
+
+    private AnimalViewModel(Application application){
+        super(application);
         this.animales = new MutableLiveData<>();
-        this.animales.setValue(new ArrayList<>());
-
-        this.addAnimal(new Animal("Águila","Ave rapaz",R.drawable.aguila));
-        this.addAnimal(new Animal("Ballena","Mamífero marino",R.drawable.ballena));
-        this.addAnimal(new Animal("Caballo","Porte elegante",R.drawable.caballo));
-        this.addAnimal(new Animal("Canario","Canto espectacular",R.drawable.canario));
-        this.addAnimal(new Animal("Delfín","Mamífero marino",R.drawable.delfin));
-        this.addAnimal(new Animal("Gato","Animal doméstico",R.drawable.gato));
     }
+
+    public static synchronized AnimalViewModel getInstance(Application application){
+        if(instance == null){
+            instance = new AnimalViewModel(application);
+        }
+        return instance;
+    }
+
 
     public void addAnimal(Animal animal){
         List<Animal> animalList = animales.getValue();

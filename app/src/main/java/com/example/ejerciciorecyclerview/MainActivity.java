@@ -27,11 +27,23 @@ public class MainActivity extends AppCompatActivity {
         rvAnimales = findViewById(R.id.rvAnimales);
         rvAnimales.setLayoutManager(new LinearLayoutManager(this));
 
-        animalViewModel = new ViewModelProvider(this).get(AnimalViewModel.class);
+        animalViewModel = AnimalViewModel.getInstance(this.getApplication());
         
         animalViewModel.animales.observe(this,animals -> {
             rvAnimales.setAdapter(new AdapterAnimales(animals));
         });
+
+        crearAnimales();
+    }
+
+    private void crearAnimales() {
+        animalViewModel.animales.setValue(new ArrayList<>());
+        animalViewModel.addAnimal(new Animal("Águila","Ave rapaz",R.drawable.aguila));
+        animalViewModel.addAnimal(new Animal("Ballena","Mamífero marino",R.drawable.ballena));
+        animalViewModel.addAnimal(new Animal("Caballo","Porte elegante",R.drawable.caballo));
+        animalViewModel.addAnimal(new Animal("Canario","Canto espectacular",R.drawable.canario));
+        animalViewModel.addAnimal(new Animal("Delfín","Mamífero marino",R.drawable.delfin));
+        animalViewModel.addAnimal(new Animal("Gato","Animal doméstico",R.drawable.gato));
     }
 
 }
